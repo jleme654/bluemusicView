@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Blue Music</title>
+    </h:head>
+    <h:body>
+        <table width="50%" align="center">
+            <tr><td>
+                    <h:form> 
+                        <p:dataTable var="b" value="#{dataScrollerView.bandasChoose}">
+                            <p:column headerText="Suas Bandas escolhidas">
+                                <h:outputText value="#{b.nome}" />
+                            </p:column>
+                        </p:dataTable>
+                        <br />
+                        <p:dataTable var="b" value="#{dataScrollerView.bandasAll}">
+                            <f:facet name="header" >
+                                Muito obrigado pela sua participação. Envie sua pesquisa. </f:facet>
+                            <p:column headerText="Banda">
+                                <h:outputText value="#{b.nome}" />
+                            </p:column>
+                            <p:column headerText="Votos">
+                                <h:outputText value="#{b.votos}" />
+                            </p:column>
+                            <p:column headerText="Posicao">
+                                <h:outputText value="#{b.id} lugar" />
+                            </p:column>
+                        </p:dataTable>
+                        <br /><center>
+                        <h:panelGrid columns="2" cellpadding="5" style="text-align: center" columnClasses="logo,detail">
+                            <h:outputLabel for="username" value="Nome: " />
+                            <p:inputText id="username" value="#{dataScrollerView.nome}" required="true" label="username" />
+
+                            <h:outputLabel for="email" value="Email:" />
+                            <p:inputText id="email" value="#{dataScrollerView.email}" required="true" label="email" />
+
+                            <f:facet name="footer">
+                                <p:commandButton value="Enviar" actionListener="#{dataScrollerView.sendSearch(dataScrollerView.nome, dataScrollerView.email)}" />
+                            </f:facet>  
+                        </h:panelGrid></center>
+                    </h:form>
+                </td>
+            </tr>
+        </table>
+    </h:body>
+</html>
+
